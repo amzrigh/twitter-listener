@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/krzcho/eventmachine.git
+  revision: c723288472d44cf544ea5a9068a6c65339e4de95
+  branch: master
+  specs:
+    eventmachine (1.0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,7 +78,6 @@ GEM
       simple_oauth (~> 0.2)
     equalizer (0.0.11)
     erubis (2.7.0)
-    eventmachine (1.0.7)
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -200,6 +206,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   coffee-script-source (= 1.8.0)
+  eventmachine!
   jbuilder (~> 2.0)
   jquery-rails
   pg
