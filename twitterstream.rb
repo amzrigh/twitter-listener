@@ -21,7 +21,7 @@ Obscenity.configure do |config|
   config.blacklist = File.join(root, "config", "obscenity.yml")
 end
 
-terms = ['#thisismyhashtag']
+terms = ['#earthbound']
 
 daemon = TweetStream::Daemon.new('tracker', log_output: true, backtrace: true)
 
