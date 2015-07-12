@@ -5,7 +5,6 @@ require File.join(root, "config", "environment")
 
 require 'tweetstream'
 require './app/models/post'
-require './twittercatchup'
 require 'obscenity'
 
 puts "Initializing daemon..."
