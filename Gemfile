@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -32,7 +32,7 @@ gem 'obscenity'
 gem 'will_paginate', '>= 3.0.7'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
