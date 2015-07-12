@@ -1,0 +1,16 @@
+<h1>Total Signatures: <%= Post.select(:user_name).distinct.count %></h1>
+<ul>
+	<% @posts.each do |post| %>
+	<li>
+		<div>
+			<% unless post.avatar.nil? %> 
+				<%= link_to image_tag(post.avatar), "http://twitter.com/#{post.user_name}" %>
+			<% end %>
+			<%= link_to "@#{post.user_name}", "http://twitter.com/#{post.user_name}" %>
+		</div>
+		<div>
+			<%= link_to post.message_text, "http://twitter.com/#{post.user_name}/status/#{post.message_id[2..-1]}" %>
+		</div>
+	</li>
+	<% end %>
+</ul>

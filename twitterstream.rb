@@ -1,9 +1,11 @@
 ENV["RAILS_ENV"] ||= "development"
 
-root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+root = File.expand_path(File.join(File.dirname(__FILE__), '.'))
 require File.join(root, "config", "environment")
 
 require 'tweetstream'
+require './app/models/post'
+require './twittercatchup'
 
 puts "Initializing daemon..."
 
@@ -29,16 +31,18 @@ daemon.on_error do |message|
 end
 
 daemon.on_reconnect do |timeout, retries|
-	puts "on_reconnect: #{timeout}, #{retries}"
+  puts "on_reconnect: #{timeout}, #{retries}"
 end
 
 daemon.on_limit do |discarded_count|
-	puts "on_limit: #{skip_count}"
+  puts "on_limit: #{skip_count}"
 end
 
-daemon.track(terms) do |msg|
-  Post.create(msg.user.screen_name
-  msg.user.name
-  msg.text
-  msg.id
+daemon.track(terms) do |message|
+  Post.create(display_name: message.user.screen_name,
+              user_name: message.user.name,
+              avatar: message.user.profile_image_uri,
+              message_text: message.text,
+              message_id: "tw#{message.id}",
+              rating: 0)
 end
