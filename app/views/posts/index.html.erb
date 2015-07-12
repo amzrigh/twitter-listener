@@ -1,12 +1,11 @@
 <h1>Tweets</h1>
-
 <%= will_paginate %>
-
 <table border="1" cellpadding="1">
   <tr>
     <th></th>
     <th>User</th>
     <th>Tweet</th>
+    <th>Datetime</th>
     <th>Rating</th>
   </tr>
   <% @posts.each do |post| %>
@@ -19,6 +18,9 @@
       </td>
       <td>
         <%= link_to post.message_text, "http://twitter.com/#{post.user_name}/status/#{post.message_id[2..-1]}" %>
+      </td>
+      <td>
+        <%= post.created_at %>
       </td>
       <td>
         <%= post.rating %>
