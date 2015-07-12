@@ -1,0 +1,29 @@
+<h1>Tweets</h1>
+
+<%= will_paginate %>
+
+<table border="1" cellpadding="1">
+  <tr>
+    <th></th>
+    <th>User</th>
+    <th>Tweet</th>
+    <th>Rating</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <%= link_to image_tag(post.avatar), "http://twitter.com/#{post.user_name}" %>
+      </td>
+      <td>
+        <%= link_to "@#{post.user_name}", "http://twitter.com/#{post.user_name}" %>
+      </td>
+      <td>
+        <%= link_to post.message_text, "http://twitter.com/#{post.user_name}/status/#{post.message_id[2..-1]}" %>
+      </td>
+      <td>
+        <%= post.rating %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate %>

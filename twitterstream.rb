@@ -6,6 +6,7 @@ require File.join(root, "config", "environment")
 require 'tweetstream'
 require './app/models/post'
 require './twittercatchup'
+require 'obscenity'
 
 puts "Initializing daemon..."
 
@@ -15,6 +16,10 @@ TweetStream.configure do |config|
   config.oauth_token        = '18726841-OtsofftJfOWwsz8zvDMsw3KRG9d5fWVz7OxrDSS89'
   config.oauth_token_secret = 'pL3zk9p8uF85wBi48saa6NWCZ6oxzHuGwkcAW7Idf6eXg'
   config.auth_method        = :oauth
+end
+
+Obscenity.configure do |config|
+  config.blacklist = File.join(root, "config", "obscenity.yml")
 end
 
 terms = ['#thisismyhashtag']
@@ -39,10 +44,11 @@ daemon.on_limit do |discarded_count|
 end
 
 daemon.track(terms) do |message|
-  Post.create(display_name: message.user.screen_name,
-              user_name: message.user.name,
+  initial_rating = Obscenity.profane?(message.text) ? -1 : 1
+  Post.create(display_name: message.user.name,
+              user_name: message.user.screen_name,
               avatar: message.user.profile_image_uri,
               message_text: message.text,
               message_id: "tw#{message.id}",
-              rating: 0)
+              rating: initial_rating)
 end

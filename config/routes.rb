@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'admin/login' => 'sessions#new'
+  post 'admin/login' => 'sessions#create'
+  delete 'admin/logout' => 'sessions#destroy'
+
+  get 'admin/posts' => 'posts#index'
+
   root 'display#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

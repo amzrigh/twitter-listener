@@ -6,6 +6,7 @@ gem 'rails', '4.2.3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '>= 3.2.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -26,9 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'twitter'
 gem 'tweetstream'
-gem 'eventmachine', :github => 'krzcho/eventmachine', :branch => 'master'
+gem 'obscenity'
+gem 'will_paginate', '>= 3.0.7'
+gem 'bootstrap-will_paginate', '>= 0.0.10'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -44,6 +46,8 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  gem 'eventmachine', :github => 'krzcho/eventmachine', :branch => 'master'
 end
 
 group :production do
