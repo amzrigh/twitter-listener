@@ -31,8 +31,8 @@ gem 'tweetstream'
 gem 'obscenity'
 gem 'will_paginate', '>= 3.0.7'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
-# Use Unicorn as the app server
-gem 'unicorn'
+gem 'daemons'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -48,11 +48,14 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'eventmachine', :github => 'krzcho/eventmachine', :branch => 'master'
+  gem 'win32-process'
 end
 
 group :production do
   gem 'pg'
   gem 'rails_12factor','0.0.2'
+  # Use Unicorn as the app server
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
