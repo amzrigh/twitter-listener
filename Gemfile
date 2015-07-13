@@ -48,7 +48,6 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'eventmachine', :github => 'krzcho/eventmachine', :branch => 'master'
-  gem 'win32-process'
 end
 
 group :production do
