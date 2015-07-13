@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'daemons'
-require 'win32-process'
 
 desc "Listen to the Twitter stream and capture tweets"
 task :listen => [:environment] do
