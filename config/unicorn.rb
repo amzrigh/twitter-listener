@@ -3,7 +3,7 @@ timeout 30
 preload_app true
 
 before_fork do |server, worker|
-  #@delayed_job_pid ||= spawn("bundle exec rake listen")
+  @delayed_job_pid ||= spawn("bundle exec rake listen")
 
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
