@@ -28,7 +28,7 @@ task :listen, [:daemon_args] => [:environment] do |t, args|
 
   terms = ['#earthbound']
 
-  daemon = TweetStream::Daemon.new('tracker', log_output: true, backtrace: true, ARGV: [args[:daemon_args]])
+  daemon = TweetStream::Daemon.new('tracker', log_output: true, backtrace: true, ARGV: [args[:daemon_args]], ontop: true)
 
   daemon.on_inited do
     ActiveRecord::Base.connection.reconnect!
