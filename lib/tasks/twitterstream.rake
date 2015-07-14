@@ -7,7 +7,7 @@ require File.join(root, "app/models", "post")
 require 'obscenity'
 
 desc "Listen to the Twitter stream and capture tweets"
-task :listen => [:environment] do
+task :listen, [:daemon_args] => [:environment] do |t, args|
   #  Daemons.run_proc('twitterstream', ARGV: ['run'], log_output: true) do
   #exec "ruby /lib/twitterstream.rb run"
   ENV["RAILS_ENV"] ||= "development"
@@ -28,7 +28,7 @@ task :listen => [:environment] do
 
   terms = ['#earthbound']
 
-  daemon = TweetStream::Daemon.new('tracker', log_output: true, backtrace: true, ARGV: ['run'])
+  daemon = TweetStream::Daemon.new('tracker', log_output: true, backtrace: true, ARGV: [args[:daemon_args]])
 
   daemon.on_inited do
     ActiveRecord::Base.connection.reconnect!
